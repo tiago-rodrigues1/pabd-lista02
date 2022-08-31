@@ -20,11 +20,11 @@ LEFT JOIN
 ) AS Vitorias ON times.id = vencedor
 LEFT JOIN (
 		SELECT derrotado, COUNT(derrotado) AS qtd_derrotas FROM (
-		SELECT id, time2_id AS derrotado FROM partidas
-		WHERE time1_gols > time2_gols
-		UNION
-		SELECT id, time1_id AS derrotado FROM partidas
-		WHERE time1_gols < time2_gols
+			SELECT id, time2_id AS derrotado FROM partidas
+			WHERE time1_gols > time2_gols
+			UNION
+			SELECT id, time1_id AS derrotado FROM partidas
+			WHERE time1_gols < time2_gols
 	) AS derrotas
 	GROUP BY derrotado
 ) AS Derrotas ON times.id = derrotado
